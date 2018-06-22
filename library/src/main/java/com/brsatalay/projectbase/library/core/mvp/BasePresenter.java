@@ -106,30 +106,37 @@ public abstract class BasePresenter<T extends BaseView, R extends Repository, SM
         }
     }
 
-    protected void showLoading(){
+    public void showLoading(){
         if (view != null)
             view.showLoading();
     }
 
-    protected void showLoading(@StringRes int stringResId){
+    public void showLoading(@StringRes int stringResId){
         if (view != null)
             view.showLoading(stringResId);
     }
 
-    protected void hideLoading(){
+    public void hideLoading(){
         if (view != null)
             view.hideLoading();
     }
 
-    protected void postEvent(@StringRes int resourceId){
+    public void postEvent(@StringRes int resourceId){
         if (getView() != null)
             getView().postEvent(resourceId);
     }
 
-    protected SharedPreferences getSharedPreference(){
+    public SharedPreferences getSharedPreference(){
         if (preferences == null)
             preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         return preferences;
+    }
+
+    public void showLoadingWithDelay(Runnable runnable){
+        if (getView() != null)
+            getView().showLoadingWithDelay(runnable);
+        else
+            runnable.run();
     }
     public abstract void onDestroy();
 }
