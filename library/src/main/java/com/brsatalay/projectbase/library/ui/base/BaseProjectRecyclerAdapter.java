@@ -4,8 +4,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.brsatalay.projectbase.library.core.data.interfaces.AdapterListener;
+import com.brsatalay.projectbase.library.core.data.model.ImageDisplayStyle;
+import com.brsatalay.projectbase.library.core.util.UtilsImage;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,7 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
     private List<M> cacheData;
     private List<M> allData;
     private List<M> selectedData;
+    private Picasso picasso;
     protected final int VIEW_TYPE_ITEM = 0;
     protected final int VIEW_TYPE_LOADING = 1;
 
@@ -134,6 +140,16 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
         allData.set(position, data);
     }
 
+    public Picasso getPicasso() {
+        if (picasso == null)
+            throw new RuntimeException("Oluşturulan adaptöre picasso tanımlanmamış.");
+        return picasso;
+    }
+
+    public void setPicasso(Picasso picasso) {
+        this.picasso = picasso;
+    }
+
     public void changeOrder() {
         List<M> newList = new ArrayList<>();
 
@@ -159,6 +175,11 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
 
     @Override
     public void onClickListener(View view, int position) {}
+
+    @Override
+    public void onLoadImage(String url, ImageView photoView, Callback callback, ImageDisplayStyle displayStyle) {
+        UtilsImage.loadImage(getPicasso(), url, photoView, callback, displayStyle);
+    }
 
     @Override
     public boolean isSelected(Object model) {

@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.brsatalay.projectbase.library.core.data.model.ImageDisplayStyle;
+import com.squareup.picasso.Callback;
 
 /**
  * Created by barisatalay on 22.03.2018.
@@ -67,6 +71,7 @@ public abstract class BaseProjectHolder<T> extends RecyclerView.ViewHolder {
 
     public interface HolderListener<M>{
         void onClickListener(View view, int position);
+        void onLoadImage(String url, ImageView photoView, Callback callback, ImageDisplayStyle displayStyle);
         boolean isSelected(M model);
     }
 
