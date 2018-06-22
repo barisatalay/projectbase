@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.EditText" parent="AppTheme">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!--FONT Lato-->
+    <style name="AppTheme.TextView.Lato" parent="AppTheme">
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Larger" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_larger</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Larger.Primary" parent="AppTheme.TextView.Lato.Larger">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Normal" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Normal.Small" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_normal_small</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Normal.Smaller" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_normal_smaller</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Small" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Small.Big" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_small_big</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Smaller" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_smaller</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Smaller.More" parent="AppTheme.TextView.Lato">
+        <item name="android:textSize">@dimen/font_smaller_more</item>
+    </style>
+    <!--FONT Lato-->
+
+    <!--FONT Lato BOLD-->
+    <style name="AppTheme.TextView.Lato.Bold" parent="AppTheme">
+        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Larger" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_larger</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Larger.Primary" parent="AppTheme.TextView.Lato.Bold.Larger">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Normal" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Normal.Small" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_normal_small</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Normal.Smaller" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_normal_smaller</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Small" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Small.Big" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_small_big</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Smaller" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_smaller</item>
+    </style>
+
+    <style name="AppTheme.TextView.Lato.Bold.Smaller.More" parent="AppTheme.TextView.Lato.Bold">
+        <item name="android:textSize">@dimen/font_smaller_more</item>
+    </style>
+    <!--FONT Lato BOLD-->
+</resources>

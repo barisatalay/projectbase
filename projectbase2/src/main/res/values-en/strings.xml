@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ProjectBase</string>
+
+    <string name="save">Save</string>
+    <string name="forexit">Press 2 times to exit</string>
+    <string name="appversion">Application Version</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="done">Done</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Geri</string>
+    <string name="title">Title</string>
+    <string name="name">Name</string>
+    <string name="success">Success</string>
+    <string name="okey">Okey</string>
+    <string name="phone">Phone</string>
+    <string name="description">Description</string>
+    <string name="loading">Loading...</string>
+</resources>

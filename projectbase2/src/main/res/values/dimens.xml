@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--FONT-->
+    <dimen name="font_larger">40sp</dimen>
+    <dimen name="font_large">30sp</dimen>
+    <dimen name="font_normal">25sp</dimen>
+    <dimen name="font_normal_small">18sp</dimen>
+    <dimen name="font_normal_smaller">16sp</dimen>
+    <dimen name="font_small_big">14sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_smaller">10sp</dimen>
+    <dimen name="font_smaller_more">9sp</dimen>
+
+    <dimen name="radius_small">3dp</dimen>
+    <dimen name="radius_normal">20dp</dimen>
+    <dimen name="radius_big">30dp</dimen>
+
+    <!--MARGIN-->
+    <dimen name="margin_screen">14dp</dimen>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_smaller">5dp</dimen>
+    <!--MARGIN-->
+
+    <!--LAYOUT HEIGHT-->
+    <dimen name="layout_height_larger_more">300dp</dimen>
+    <dimen name="layout_height_larger">200dp</dimen>
+    <dimen name="layout_height_larger_small">175dp</dimen>
+    <dimen name="layout_height_larger_smaller">150dp</dimen>
+    <dimen name="layout_height_large_big">130dp</dimen>
+    <dimen name="layout_height_large">100dp</dimen>
+    <dimen name="layout_height_large_small">75dp</dimen>
+    <dimen name="layout_height_large_smaller">65dp</dimen>
+    <dimen name="layout_height_normal_big">50dp</dimen>
+    <dimen name="layout_height_normal">45dp</dimen>
+    <dimen name="layout_height_small">40dp</dimen>
+    <dimen name="layout_height_small_more">35dp</dimen>
+    <dimen name="layout_height_smaller">20dp</dimen>
+    <dimen name="layout_height_smaller_more">10dp</dimen>
+    <!--LAYOUT HEIGHT-->
+
+    <!--DIVIDER-->
+    <!--<dimen name="divider_larger">10dp</dimen>-->
+    <dimen name="divider_normal_big">2dp</dimen>
+    <dimen name="divider_normal">1dp</dimen>
+    <dimen name="divider_small">0.5dp</dimen>
+    <!--DIVIDER-->
+
+
+</resources>

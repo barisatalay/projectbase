@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ProjectBase</string>
+
+    <string name="save">Kaydet</string>
+    <string name="forexit">Çıkmak için 2 kere basın</string>
+    <string name="appversion">Uygulama Versiyonu</string>
+    <string name="next">Sonraki</string>
+    <string name="previous">Önceki</string>
+    <string name="done">Tamam</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="cancel">İptal</string>
+    <string name="back">Geri</string>
+    <string name="title">Ünvan</string>
+    <string name="name">İsim</string>
+    <string name="success">Başarılı</string>
+    <string name="okey">Tamam</string>
+    <string name="phone">Telefon</string>
+    <string name="description">Açıklama</string>
+    <string name="loading">Yükleniyor...</string>
+</resources>
