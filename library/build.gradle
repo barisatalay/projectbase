@@ -43,7 +43,8 @@ dependencies {
     implementation "com.andkulikov:transitionseverywhere:1.7.8"
     //Firebase
     implementation 'com.google.firebase:firebase-messaging:10.2.1'
-
+    //Permissions
+    implementation 'com.karumi:dexter:4.1.0'
 
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
