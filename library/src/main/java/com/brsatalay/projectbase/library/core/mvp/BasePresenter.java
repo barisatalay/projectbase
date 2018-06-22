@@ -14,14 +14,13 @@ import io.reactivex.disposables.CompositeDisposable;
  *
  * T: View Model
  * R: Repository Model
- * U: User Model
+ * SM: Extend from SessionManager
  */
-public abstract class BasePresenter<T extends BaseView, R extends Repository, U> implements Presenter<T, R, U>{
+public abstract class BasePresenter<T extends BaseView, R extends Repository, SM extends SessionManager> implements Presenter<T, R, SM>{
     public String TAG = this.getClass().getSimpleName();
     private T view;
     private R repository;
-
-    private SessionManager<U> manager;
+    private SM manager;
     private CompositeDisposable compositeDisposable = null;
     private Activity mActivity;
     private SharedPreferences preferences;
@@ -61,7 +60,7 @@ public abstract class BasePresenter<T extends BaseView, R extends Repository, U>
     }
 
     @Override
-    public void attachSessionManager(SessionManager manager) {
+    public void attachSessionManager(SM manager) {
         this.manager = manager;
     }
 
@@ -70,7 +69,7 @@ public abstract class BasePresenter<T extends BaseView, R extends Repository, U>
         manager = null;
     }
 
-    public SessionManager getSessionManager() {
+    public SM getSessionManager() {
         return manager;
     }
 
