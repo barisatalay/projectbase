@@ -11,14 +11,17 @@ import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by baris on 20.07.2017.
+ *
+ * T: View Model
+ * R: Repository Model
+ * U: User Model
  */
-
-public abstract class BasePresenter<T extends BaseView, R extends Repository> implements Presenter<T, R>{
+public abstract class BasePresenter<T extends BaseView, R extends Repository, U> implements Presenter<T, R, U>{
     public String TAG = this.getClass().getSimpleName();
     private T view;
     private R repository;
 
-    private SessionManager manager;
+    private SessionManager<U> manager;
     private CompositeDisposable compositeDisposable = null;
     private Activity mActivity;
     private SharedPreferences preferences;
