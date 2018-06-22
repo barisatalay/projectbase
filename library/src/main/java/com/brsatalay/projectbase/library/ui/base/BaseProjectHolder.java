@@ -9,7 +9,7 @@ import android.view.View;
  * Created by barisatalay on 22.03.2018.
  */
 
-public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
+public abstract class BaseProjectHolder<T> extends RecyclerView.ViewHolder {
     public String TAG = this.getClass().getSimpleName();
     private Context mContext;
     private Activity mActivity;
@@ -19,12 +19,12 @@ public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
      * */
     private String tempData;
 
-    public BaseHolder(View itemView) {
+    public BaseProjectHolder(View itemView) {
         super(itemView);
         setContext(itemView.getContext());
     }
 
-    private BaseHolder setContext(Context mContext){
+    private BaseProjectHolder setContext(Context mContext){
         this.mContext = mContext;
 
         return this;
@@ -34,7 +34,7 @@ public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
         return mContext;
     }
 
-    public BaseHolder setActivity(Activity mActivity) {
+    public BaseProjectHolder setActivity(Activity mActivity) {
         this.mActivity = mActivity;
         return this;
     }

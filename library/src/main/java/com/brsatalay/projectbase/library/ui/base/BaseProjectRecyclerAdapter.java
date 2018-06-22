@@ -14,7 +14,7 @@ import java.util.List;
  * Created by barisatalay on 22.03.2018.
  */
 
-public abstract class BaseRecyclerAdapter<H extends BaseHolder<M>, M> extends RecyclerView.Adapter<H> implements BaseHolder.HolderListener {
+public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>, M> extends RecyclerView.Adapter<H> implements BaseProjectHolder.HolderListener {
     private String TAG = this.getClass().getSimpleName();
     private AdapterListener listener;
     private int selectableCount = 999;
@@ -24,7 +24,7 @@ public abstract class BaseRecyclerAdapter<H extends BaseHolder<M>, M> extends Re
     protected final int VIEW_TYPE_ITEM = 0;
     protected final int VIEW_TYPE_LOADING = 1;
 
-    public BaseRecyclerAdapter(List<M> cacheData) {
+    public BaseProjectRecyclerAdapter(List<M> cacheData) {
         this.cacheData = new ArrayList<>();
         this.allData = new ArrayList<>();
         this.selectedData = new ArrayList<>();

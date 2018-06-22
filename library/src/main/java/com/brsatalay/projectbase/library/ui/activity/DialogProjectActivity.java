@@ -7,9 +7,9 @@ import android.widget.TextView;
 
 import com.brsatalay.projectbase.library.R;
 import com.brsatalay.projectbase.library.core.data.model.mdlDialog;
-import com.brsatalay.projectbase.library.ui.base.BaseActivity;
+import com.brsatalay.projectbase.library.ui.base.BaseProjectActivity;
 
-public class DialogActivity extends BaseActivity {
+public class DialogProjectActivity extends BaseProjectActivity {
     private mdlDialog dialog = new mdlDialog();
 
     private TextView btnTitle;
@@ -17,7 +17,7 @@ public class DialogActivity extends BaseActivity {
     private TextView title;
 
     public static Intent newInstance(Context mContext, String title, String description, String buttonTitle, boolean isHtml){
-        Intent intent = new Intent(mContext, DialogActivity.class);
+        Intent intent = new Intent(mContext, DialogProjectActivity.class);
         intent.putExtra("DialogTitle",title);
         intent.putExtra("DialogDescription", description);
         intent.putExtra("DialogButtonTitle", buttonTitle);

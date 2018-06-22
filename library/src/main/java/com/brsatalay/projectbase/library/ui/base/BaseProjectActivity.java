@@ -28,7 +28,7 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseProjectActivity extends AppCompatActivity implements BaseView {
     public final String TAG = this.getClass().getSimpleName();
     private UtilsLoading utilsLoading;
     private boolean isUiRendered = false;

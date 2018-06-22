@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.brsatalay.projectbase.library.BuildConfig;
 import com.brsatalay.projectbase.library.R;
 import com.brsatalay.projectbase.library.core.data.model.event.BaseEvent;
-import com.brsatalay.projectbase.library.ui.activity.DialogActivity;
+import com.brsatalay.projectbase.library.ui.activity.DialogProjectActivity;
 
 /**
  * Created by barisatalay on 10.04.2018.
@@ -45,7 +45,7 @@ public class UtilsDialog {
 
     public static void showPermanentMessage(Activity mActivity, String title, String description, boolean isHtml){
         mActivity.runOnUiThread(() -> {
-            mActivity.startActivity(DialogActivity.newInstance(mActivity, title, description, mActivity.getString(R.string.okey), isHtml));
+            mActivity.startActivity(DialogProjectActivity.newInstance(mActivity, title, description, mActivity.getString(R.string.okey), isHtml));
             mActivity.overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
         });
     }
