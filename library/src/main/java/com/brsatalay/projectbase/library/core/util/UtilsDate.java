@@ -1,7 +1,7 @@
 package com.brsatalay.projectbase.library.core.util;
 
 
-import com.gubrebayi.mobile.core.data.constant.FormatSettings;
+import com.brsatalay.projectbase.library.core.data.constant.FormatSettings;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
