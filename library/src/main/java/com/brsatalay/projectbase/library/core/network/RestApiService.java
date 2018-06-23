@@ -22,13 +22,9 @@ public class RestApiService<T> {
     private T restInterface;
     private Interceptor[] interceptors;
     private static HttpListener listener;
-    /**
-     * Eğer uygulama hata ayıklama modunda çalıştırılıyorsa burası true'dir
-     * */
-    private static boolean debugMode = false;
     //endregion
 
-    public RestApiService(Context mContext, String apiBaseUrl, Class<T> restInterface){
+    public RestApiService(Context mContext, String apiBaseUrl){
         this.mContext = mContext;
         this.apiBaseUrl = apiBaseUrl;
     }

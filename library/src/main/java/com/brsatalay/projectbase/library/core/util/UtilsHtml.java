@@ -27,7 +27,7 @@ public class UtilsHtml {
     public static String brToLB(String oldStr, int addEndLineCount){
         if(oldStr == null || oldStr.isEmpty()) return "";
 
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         String seperatorItem = "<br />";
         String Temp = oldStr.replace("<br/>",seperatorItem);
 
