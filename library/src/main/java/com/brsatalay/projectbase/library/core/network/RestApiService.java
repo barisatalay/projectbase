@@ -6,6 +6,7 @@ import com.brsatalay.projectbase.library.core.data.interfaces.HttpListener;
 import com.brsatalay.projectbase.library.core.util.UtilsRetrofit;
 
 import okhttp3.Dispatcher;
+import okhttp3.Interceptor;
 import retrofit2.Retrofit;
 
 /**
@@ -19,6 +20,7 @@ public class RestApiService<T> {
     private Context mContext;
     private String apiBaseUrl;
     private T restInterface;
+    private Interceptor[] interceptors;
     private static HttpListener listener;
     /**
      * Eğer uygulama hata ayıklama modunda çalıştırılıyorsa burası true'dir
@@ -29,7 +31,6 @@ public class RestApiService<T> {
     public RestApiService(Context mContext, String apiBaseUrl, Class<T> restInterface){
         this.mContext = mContext;
         this.apiBaseUrl = apiBaseUrl;
-        createRestConfig(restInterface);
     }
 
     public static HttpListener getListener() {
@@ -40,7 +41,9 @@ public class RestApiService<T> {
         RestApiService.listener = listener;
     }
 
-    private void createRestConfig(final Class<T> service) {
+    public void prepareConfig(final Class<T> service, Interceptor... args) {
+        applyInterceptors(args);
+
         dispatcher = createNewDispatcher();
 
         restAdapter = createRestAdapter();
@@ -49,7 +52,11 @@ public class RestApiService<T> {
     }
 
     private Retrofit createRestAdapter() {
-        return UtilsRetrofit.createRetrofitAdapter(mContext, dispatcher, apiBaseUrl);
+        return UtilsRetrofit.createRetrofitAdapter(mContext, dispatcher, apiBaseUrl, interceptors);
+    }
+
+    private void applyInterceptors(Interceptor... args){
+        interceptors = args;
     }
 
     private Dispatcher createNewDispatcher() {
