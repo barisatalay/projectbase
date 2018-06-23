@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 
 import com.brsatalay.projectbase.library.R;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 
 
 /**
@@ -63,10 +66,10 @@ public class UtilsRecyclerView {
 
     }
 
-//    public static void prepareFlexboxManRecycler(RecyclerView recyclerView) {
-//        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(recyclerView.getContext());
-//        layoutManager.setFlexDirection(FlexDirection.ROW);
-//        layoutManager.setJustifyContent(JustifyContent.FLEX_START);
-//        recyclerView.setLayoutManager(layoutManager);
-//    }
+    public static void prepareFlexboxManRecycler(RecyclerView recyclerView) {
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(recyclerView.getContext());
+        layoutManager.setFlexDirection(FlexDirection.ROW);
+        layoutManager.setJustifyContent(JustifyContent.FLEX_START);
+        recyclerView.setLayoutManager(layoutManager);
+    }
 }

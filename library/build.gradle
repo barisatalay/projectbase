@@ -46,6 +46,8 @@ dependencies {
     implementation 'com.karumi:dexter:4.1.0'
     //Image
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    //Google
+    implementation 'com.google.android:flexbox:1.0.0'
 
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
