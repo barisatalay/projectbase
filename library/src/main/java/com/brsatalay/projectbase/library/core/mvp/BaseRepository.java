@@ -5,7 +5,7 @@ import android.content.Context;
 import com.brsatalay.projectbase.library.core.GlobalBus;
 import com.brsatalay.projectbase.library.core.network.RestApiService;
 
-public class BaseRepository<T> {
+public class BaseRepository<T> implements Repository{
     public final String TAG = this.getClass().getSimpleName();
     private RestApiService<T> restApiService;
 
@@ -23,6 +23,12 @@ public class BaseRepository<T> {
         restApiService.cancelAll();
     }
 
+    @Override
+    public void cancalAllQueue() {
+        cancelAll();
+    }
+
+    @Override
     public void setRestApiService(RestApiService restApiService) {
         this.restApiService = restApiService;
     }
