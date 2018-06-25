@@ -7,6 +7,7 @@ import com.brsatalay.projectbase.library.core.network.interceptor.NetworkInterce
 
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.annotations.Nullable;
 import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -36,7 +37,7 @@ public class UtilsRetrofit {
         return result;
     }
 
-    public static Retrofit createRetrofitAdapter(Context mContext, Dispatcher mDispatcher, String baseUrl, Interceptor... args){
+    public static Retrofit createRetrofitAdapter(Context mContext, Dispatcher mDispatcher, String baseUrl, @Nullable Interceptor... args){
         return new Retrofit.Builder()
 //                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)

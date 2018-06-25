@@ -5,6 +5,7 @@ import android.content.Context;
 import com.brsatalay.projectbase.library.core.data.interfaces.HttpListener;
 import com.brsatalay.projectbase.library.core.util.UtilsRetrofit;
 
+import io.reactivex.annotations.Nullable;
 import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
 import retrofit2.Retrofit;
@@ -37,7 +38,7 @@ public class RestApiService<T> {
         RestApiService.listener = listener;
     }
 
-    public void prepareConfig(final Class<T> service, Interceptor... args) {
+    public void prepareConfig(final Class<T> service, @Nullable Interceptor... args) {
         applyInterceptors(args);
 
         dispatcher = createNewDispatcher();
@@ -51,7 +52,7 @@ public class RestApiService<T> {
         return UtilsRetrofit.createRetrofitAdapter(mContext, dispatcher, apiBaseUrl, interceptors);
     }
 
-    private void applyInterceptors(Interceptor... args){
+    private void applyInterceptors(@Nullable Interceptor... args){
         interceptors = args;
     }
 

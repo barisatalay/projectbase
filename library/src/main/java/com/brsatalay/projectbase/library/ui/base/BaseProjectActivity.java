@@ -8,10 +8,13 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.akexorcist.localizationactivity.LocalizationDelegate;
+import com.akexorcist.localizationactivity.OnLocaleChangedListener;
 import com.brsatalay.projectbase.library.R;
 import com.brsatalay.projectbase.library.core.GlobalBus;
 import com.brsatalay.projectbase.library.core.data.model.LoadingType;
@@ -28,28 +31,34 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
-public abstract class BaseProjectActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseProjectActivity extends AppCompatActivity implements BaseView, OnLocaleChangedListener {
+    private LocalizationDelegate localizationDelegate = new LocalizationDelegate(this);
     public final String TAG = this.getClass().getSimpleName();
     private UtilsLoading utilsLoading;
     private boolean isUiRendered = false;
     private boolean isDrawerActivity = false;
     /**
+     * Application Language Code
+     * */
+    private String activeLangCode;
+    /**
      * Bu sayı sıfırlanmadıkça ekranda ki loading gözükmeye devam edecektir.
      * */
     private int loadingCounter;
 
-//    public void onRunBeforeonCreate() {
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//    }
-
     @Override
     protected void onCreate(Bundle bundle){
+        localizationDelegate.addOnLocaleChengedListener(this);
+        localizationDelegate.onCreate(bundle);
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_AUTO);
         loadingCounter = 0;
         onRunBeforeonCreate();
         super.onCreate(bundle);
+        activeLangCode = catchLanguage();
+
+        setLanguage(activeLangCode);
+
         if (!isDrawerActivity) {
             setContentView(getContentView());
             initUi();
@@ -59,23 +68,11 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
 
         prepareFabricCrashlytics();
     }
-//
-//    private void prepareFabricCrashlytics() {
-//        if (!Fabric.isInitialized()) return;
-//
-//        Crashlytics.setInt("DataBaseVersion", DatabaseConstant.ACTIVE_ANDROID_VERSION);
-//        try {
-//            String languageInfos = prepareLanguageInfos();
-//            if(!languageInfos.trim().isEmpty()){
-//                Crashlytics.setString("LanguageInfos", languageInfos);
-//            }
-//
-//        }catch (Exception e){}
-//    }
+
     /**
      * Fabric için Aktif Dilin json objesini hazırlar
      * */
-    private String prepareLanguageInfos() {
+    public String prepareLanguageInfos() {
         try{
             JSONObject languageInfo = new JSONObject();
 
@@ -103,6 +100,7 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
     @Override
     public void onResume() {
         super.onResume();
+        localizationDelegate.onResume();
         if (!GlobalBus.getBus().isRegistered(this)) {
             GlobalBus.getBus().register(this);
         }
@@ -110,8 +108,6 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
         if (!isUiRendered){
             renderUi();
         }
-
-//        hideLoading();
     }
 
     private void renderUi() {
@@ -193,6 +189,8 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
     public abstract void onAsynchronousLoad();
     public abstract void prepareFabricCrashlytics();
     public abstract void onRunBeforeonCreate();
+    /** When returned null or empty it's mean devices default language */
+    public abstract String getLanguageCode();
 
     @Override
     public void showToast(String message) {
@@ -293,4 +291,37 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
         if (runnable != null)
             getActivity().runOnUiThread(runnable);
     }
+
+    private String catchLanguage() {
+        String displayLanguage = Locale.getDefault().getDisplayLanguage();
+        String languageCode = getLanguageCode();
+
+        if (!TextUtils.isEmpty(languageCode) || displayLanguage.equalsIgnoreCase(languageCode)){
+            return languageCode;
+        }else
+            return displayLanguage;
+    }
+
+    @Override
+    public void onBeforeLocaleChanged() {}
+
+    @Override
+    public void onAfterLocaleChanged() {}
+
+    public void setLanguage(String language) {
+        localizationDelegate.setLanguage(language);
+    }
+
+    public final void setLanguage(Locale locale) {
+        localizationDelegate.setLanguage(locale);
+    }
+
+    public final String getLanguage() {
+        return localizationDelegate.getLanguage();
+    }
+
+    public final Locale getLocale() {
+        return localizationDelegate.getLocale();
+    }
+
 }
