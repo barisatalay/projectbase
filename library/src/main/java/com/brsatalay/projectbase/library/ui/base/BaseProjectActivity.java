@@ -38,10 +38,10 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
      * */
     private int loadingCounter;
 
-    public void onRunBeforeonCreate() {
+//    public void onRunBeforeonCreate() {
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
+//    }
 
     @Override
     protected void onCreate(Bundle bundle){
@@ -192,6 +192,7 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
     /** onCreateCustom işlemlerini bitirince işlemlerin devam edeceği farklı bir thread*/
     public abstract void onAsynchronousLoad();
     public abstract void prepareFabricCrashlytics();
+    public abstract void onRunBeforeonCreate();
 
     @Override
     public void showToast(String message) {
