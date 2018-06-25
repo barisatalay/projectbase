@@ -26,9 +26,8 @@ public class UtilsNotification {
         Intent intent = notificationIntent;
 
         if(intent == null){
-//            intent = new Intent(mContext, MainActivity.class);
-//            intent.putExtra("FcmType", response.getType());
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent = new Intent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 
         PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,
