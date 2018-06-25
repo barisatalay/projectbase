@@ -66,6 +66,11 @@ public class DialogProjectActivity extends BaseProjectActivity {
 
     }
 
+    @Override
+    public void onRunBeforeonCreate() {
+
+    }
+
     private void catchExtras() {
         if(getIntent().hasExtra("isHtml")){
             dialog.setHtml(getIntent().getExtras().getBoolean("isHtml", false));
