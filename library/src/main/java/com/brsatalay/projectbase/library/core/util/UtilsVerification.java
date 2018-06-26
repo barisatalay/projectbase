@@ -1,5 +1,6 @@
 package com.brsatalay.projectbase.library.core.util;
 
+import android.text.TextUtils;
 import android.util.Patterns;
 
 /**
@@ -7,7 +8,11 @@ import android.util.Patterns;
  */
 
 public class UtilsVerification {
-    public static boolean checkValid(String url){
+    public static boolean isValidUrl(String url){
         return Patterns.WEB_URL.matcher(url).matches();
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 }
