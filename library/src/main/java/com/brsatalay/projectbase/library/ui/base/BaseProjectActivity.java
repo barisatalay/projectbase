@@ -48,17 +48,23 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
 
     @Override
     protected void onCreate(Bundle bundle){
-        localizationDelegate.addOnLocaleChengedListener(this);
-        localizationDelegate.onCreate(bundle);
+        if (isEnableMultiLanguage()) {
+            localizationDelegate.addOnLocaleChengedListener(this);
+            localizationDelegate.onCreate(bundle);
+        }
+
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_AUTO);
         loadingCounter = 0;
+
         onRunBeforeonCreate();
         super.onCreate(bundle);
-        activeLangCode = catchLanguage();
 
-        setLanguage(activeLangCode);
+        if (isEnableMultiLanguage()) {
+            activeLangCode = catchLanguage();
 
+            setLanguage(activeLangCode);
+        }
         if (!isDrawerActivity) {
             setContentView(getContentView());
             initUi();
@@ -100,7 +106,8 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
     @Override
     public void onResume() {
         super.onResume();
-        localizationDelegate.onResume();
+        if (isEnableMultiLanguage())
+            localizationDelegate.onResume();
         if (!GlobalBus.getBus().isRegistered(this)) {
             GlobalBus.getBus().register(this);
         }
@@ -191,6 +198,7 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
     public abstract void onRunBeforeonCreate();
     /** When returned null or empty it's mean devices default language */
     public abstract String getLanguageCode();
+    public abstract boolean isEnableMultiLanguage();
 
     @Override
     public void showToast(String message) {
@@ -292,7 +300,7 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
             getActivity().runOnUiThread(runnable);
     }
 
-    private String catchLanguage() {
+    public String catchLanguage() {
         String displayLanguage = Locale.getDefault().getDisplayLanguage();
         String languageCode = getLanguageCode();
 
