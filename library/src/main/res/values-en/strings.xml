@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">ProjectBase</string>
-
     <string name="save">Save</string>
     <string name="forexit">Press 2 times to exit</string>
     <string name="appversion">Application Version</string>

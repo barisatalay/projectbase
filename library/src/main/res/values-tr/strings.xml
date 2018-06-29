@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">ProjectBase</string>
-
     <string name="save">Kaydet</string>
     <string name="forexit">Çıkmak için 2 kere basın</string>
     <string name="appversion">Uygulama Versiyonu</string>
