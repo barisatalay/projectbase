@@ -76,6 +76,11 @@ public class DialogProjectActivity extends BaseProjectActivity {
         return null;
     }
 
+    @Override
+    public boolean isEnableMultiLanguage() {
+        return false;
+    }
+
     private void catchExtras() {
         if(getIntent().hasExtra("isHtml")){
             dialog.setHtml(getIntent().getExtras().getBoolean("isHtml", false));
