@@ -12,6 +12,7 @@ public interface BaseView {
     void showLoading();
     void showLoading(@StringRes int stringResId);
     void showLoadingWithDelay(Runnable runnable);
+    void showLoadingWithCancelable();
     void hideLoading();
     void postEvent(String message);
     void postEvent(@StringRes int messageResourceId);

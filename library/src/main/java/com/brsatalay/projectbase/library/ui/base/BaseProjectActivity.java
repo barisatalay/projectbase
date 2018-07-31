@@ -240,6 +240,14 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
         getActivity().runOnUiThread(() -> new Handler().postDelayed(() -> hideLoading(), 2000));
     }
     /**
+     * Ekran bazlı loading animasyonunu gösterir
+     * */
+    @Override
+    public void showLoadingWithCancelable() {
+        getActivity().runOnUiThread(() -> getUtilsLoading().show(getActivity(), "", LoadingType.BallPulseIndicator).setCancelable(true));
+    }
+
+    /**
      * Ekran bazlı loading animasyonunu gizler
      * */
     @Override

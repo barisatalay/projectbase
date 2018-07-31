@@ -46,7 +46,7 @@ public abstract class BaseProjectDrawerActivity extends BaseProjectActivity impl
         ViewStub stub = findViewById(R.id.stub);
 
         stub.setLayoutResource(getContentView());
-        stub.inflate();
+        stub.setVisibility(View.VISIBLE);
 
         applySelfClickListener();
     }
