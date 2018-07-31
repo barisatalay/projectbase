@@ -36,7 +36,7 @@ public class UtilsRecyclerView {
      * Dikey olarak listeme olayına snap desteği sağlar
      */
     public static void preparSnapVerticalManRecycler(RecyclerView view) {
-
+        if (view == null) return;
         LinearLayoutManager layoutManagerStart
                 = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
         view.setLayoutManager(layoutManagerStart);

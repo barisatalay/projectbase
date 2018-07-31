@@ -116,7 +116,9 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
             renderUi();
         }
     }
-
+    /**
+     * Ekran elemanlarının çizilme durumunu verir.
+     * */
     private void renderUi() {
         onCreateView();
         new Thread(this::onAsynchronousLoad).start();
