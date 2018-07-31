@@ -138,5 +138,11 @@ public abstract class BasePresenter<T extends BaseView, R extends Repository, SM
         else
             runnable.run();
     }
+
+    protected void showLoadingWithCancelable(){
+        if (view != null)
+            view.showLoadingWithCancelable();
+    }
+
     public abstract void onDestroy();
 }
