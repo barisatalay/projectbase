@@ -39,6 +39,10 @@ public class RestApiService<T> {
     }
 
     public void prepareConfig(final Class<T> service, @Nullable Interceptor... args) {
+        prepareConfig(service, false, args);
+    }
+
+    public void prepareConfig(final Class<T> service, boolean trustUnsafeHttp, @Nullable Interceptor... args) {
         applyInterceptors(args);
 
         dispatcher = createNewDispatcher();
