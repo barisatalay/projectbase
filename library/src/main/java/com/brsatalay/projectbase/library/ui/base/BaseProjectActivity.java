@@ -318,6 +318,10 @@ public abstract class BaseProjectActivity extends AppCompatActivity implements B
             return displayLanguage;
     }
 
+    public boolean isUiCreated(){
+        return isUiRendered;
+    }
+
     @Override
     public void onBeforeLocaleChanged() {}
 
