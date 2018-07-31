@@ -18,7 +18,6 @@ public class UtilsDate {
         return sdf.format(new Date());
     }
 
-
     public static String getDateTime(String format){
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(new Date());

@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+import android.util.Log;
 
 
 import com.brsatalay.projectbase.library.R;
@@ -46,8 +47,12 @@ public class UtilsNotification {
         if(TextUtils.isEmpty(bigTitle))
             mBuilder.setContentTitle(bigTitle);
 
-        NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
+        try {
+            NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
 
-        mNotificationManager.notify(notiId, mBuilder.build());
+            mNotificationManager.notify(notiId, mBuilder.build());
+        }catch (Exception e){
+            Log.e("UtilsNotification", "sendNotification", e);
+        }
     }
 }

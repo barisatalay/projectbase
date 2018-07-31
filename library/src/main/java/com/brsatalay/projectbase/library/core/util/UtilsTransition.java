@@ -26,6 +26,7 @@ public class UtilsTransition {
      * Textview nesnesinin textini animasyonlu değiştirir
      * */
     public static void changeText(TextView view, String text){
+        if (view == null) return;
         TransitionManager.beginDelayedTransition((ViewGroup) view.getRootView(),  new ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN));
         view.setText(text);
     }
@@ -34,19 +35,23 @@ public class UtilsTransition {
      * Hedef gösterilen viewGroup içerisindeki olayı otomatik transition olarak ayarlar
      * */
     public static void autoTransition(ViewGroup viewGroup){
+        if (viewGroup == null) return;
         TransitionManager.beginDelayedTransition(viewGroup);
     }
 
     public static void changeColor(ViewGroup viewGroup) {
+        if (viewGroup == null) return;
         TransitionManager.beginDelayedTransition(viewGroup, new Recolor());
     }
 
     public static void changeRotate(View view, int rotateValue) {
+        if (view == null) return;
         TransitionManager.beginDelayedTransition((ViewGroup) view.getRootView(), new Rotate());
         view.setRotation(rotateValue);
     }
 
     public static void recyclerViewLoadAnimationFromBottom(final RecyclerView recyclerView) {
+        if (recyclerView == null) return;
         final Context context = recyclerView.getContext();
         final LayoutAnimationController controller =
                 AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_from_bottom);
@@ -57,6 +62,7 @@ public class UtilsTransition {
     }
 
     public static void changeTintColor(ImageView view, int colorValue) {
+        if (view == null) return;
         TransitionManager.beginDelayedTransition((ViewGroup) view.getRootView(), new Recolor());
         view.setColorFilter(ContextCompat.getColor(view.getContext(), colorValue));
     }

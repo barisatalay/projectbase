@@ -24,7 +24,7 @@ public class UtilsRecyclerView {
      * Yatay olarak listeme olayına snap desteği sağlar
      */
     public static void preparSnapHorizontalManRecycler(RecyclerView view) {
-
+        if (view == null) return;
         LinearLayoutManager layoutManagerStart
                 = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
         view.setLayoutManager(layoutManagerStart);
@@ -32,7 +32,19 @@ public class UtilsRecyclerView {
         SnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(view);
     }
+    /**
+     * Dikey olarak listeme olayına snap desteği sağlar
+     */
+    public static void preparSnapVerticalManRecycler(RecyclerView view) {
 
+        LinearLayoutManager layoutManagerStart
+                = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
+        view.setLayoutManager(layoutManagerStart);
+        view.setOnFlingListener(null);
+
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(view);
+    }
     /**
      * Grid mantığına göre satırları listeler
      */
@@ -44,6 +56,7 @@ public class UtilsRecyclerView {
      * Grid mantığına göre satırları listeler
      */
     public static void prepareGridManRecycler(RecyclerView view, int columCount) {
+        if (view == null) return;
         GridLayoutManager manager = new GridLayoutManager(view.getContext(), columCount);
         manager.scrollToPosition(0);
         view.setLayoutManager(manager);
@@ -52,6 +65,7 @@ public class UtilsRecyclerView {
     }
 
     public static void prepareVerticalManRecycler(RecyclerView recyclerView) {
+        if (recyclerView == null) return;
         LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         layoutManager.scrollToPosition(0);
@@ -67,6 +81,7 @@ public class UtilsRecyclerView {
     }
 
     public static void prepareFlexboxManRecycler(RecyclerView recyclerView) {
+        if (recyclerView == null) return;
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(recyclerView.getContext());
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.FLEX_START);
