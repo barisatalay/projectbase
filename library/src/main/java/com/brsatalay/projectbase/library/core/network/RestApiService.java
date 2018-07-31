@@ -47,13 +47,20 @@ public class RestApiService<T> {
 
         dispatcher = createNewDispatcher();
 
-        restAdapter = createRestAdapter();
+        restAdapter = null;
+        if (!trustUnsafeHttp)
+            restAdapter = createRestAdapter();
+        else
+            restAdapter = createUnSafeRestAdapter();
 
         restInterface = restAdapter.create(service);
     }
 
     private Retrofit createRestAdapter() {
         return UtilsRetrofit.createRetrofitAdapter(mContext, dispatcher, apiBaseUrl, interceptors);
+    }
+    private Retrofit createUnSafeRestAdapter() {
+        return UtilsRetrofit.createUnSafeRetrofitAdapter(mContext, dispatcher, apiBaseUrl, interceptors);
     }
 
     private void applyInterceptors(@Nullable Interceptor... args){
