@@ -30,11 +30,6 @@ public abstract class BaseProjectFragment<T extends BasePresenter> extends Fragm
         initUi(rootView);
         return rootView;
     }
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        onCreateView();
-//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
