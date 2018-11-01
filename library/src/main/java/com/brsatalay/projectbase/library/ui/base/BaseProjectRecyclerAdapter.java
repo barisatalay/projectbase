@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.brsatalay.projectbase.library.core.data.interfaces.AdapterListener;
 import com.brsatalay.projectbase.library.core.data.model.ImageDisplayStyle;
 import com.brsatalay.projectbase.library.core.util.UtilsImage;
+import com.bumptech.glide.RequestManager;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -27,6 +28,7 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
     private List<M> allData;
     private List<M> selectedData;
     private Picasso picasso;
+    private RequestManager glide;
     protected final int VIEW_TYPE_ITEM = 0;
     protected final int VIEW_TYPE_LOADING = 1;
 
@@ -140,9 +142,15 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
         allData.set(position, data);
     }
 
+    public RequestManager getGlide() {
+        return glide;
+    }
+
+    public void setGlide(RequestManager glide) {
+        this.glide = glide;
+    }
+
     public Picasso getPicasso() {
-        if (picasso == null)
-            throw new RuntimeException("Oluşturulan adaptöre picasso tanımlanmamış.");
         return picasso;
     }
 
@@ -178,7 +186,13 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
 
     @Override
     public void onLoadImage(String url, ImageView photoView, Callback callback, ImageDisplayStyle displayStyle) {
-        UtilsImage.loadImage(getPicasso(), url, photoView, callback, displayStyle);
+        if (getPicasso() != null)
+            UtilsImage.loadImage(getPicasso(), url, photoView, callback, displayStyle);
+        else if (getGlide() != null){
+            UtilsImage.loadImageGlide(getGlide(), url, photoView, false, displayStyle);
+        }else{
+            throw new RuntimeException("Oluşturulan adaptöre glide veya picasso tanımlanmamış.");
+        }
     }
 
     @Override
@@ -231,6 +245,7 @@ public abstract class BaseProjectRecyclerAdapter<H extends BaseProjectHolder<M>,
     public void setSelectableCount(int selectableCount) {
         this.selectableCount = selectableCount;
     }
+
 
 
     //endregion
