@@ -23,6 +23,7 @@ public class RestApiService<T> {
     private T restInterface;
     private Interceptor[] interceptors;
     private static HttpListener listener;
+    private long timeOut = 120;
     //endregion
 
     public RestApiService(Context mContext, String apiBaseUrl){
@@ -57,10 +58,10 @@ public class RestApiService<T> {
     }
 
     private Retrofit createRestAdapter() {
-        return UtilsRetrofit.createRetrofitAdapter(mContext, dispatcher, apiBaseUrl, interceptors);
+        return UtilsRetrofit.createRetrofitAdapter(mContext, dispatcher, apiBaseUrl, timeOut, interceptors);
     }
     private Retrofit createUnSafeRestAdapter() {
-        return UtilsRetrofit.createUnSafeRetrofitAdapter(mContext, dispatcher, apiBaseUrl, interceptors);
+        return UtilsRetrofit.createUnSafeRetrofitAdapter(mContext, dispatcher, apiBaseUrl, timeOut, interceptors);
     }
 
     private void applyInterceptors(@Nullable Interceptor... args){
@@ -85,5 +86,13 @@ public class RestApiService<T> {
 
     public Context getContext() {
         return mContext;
+    }
+
+    public long getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(long timeOut) {
+        this.timeOut = timeOut;
     }
 }

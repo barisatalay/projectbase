@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class UtilsRetrofit {
-    public static OkHttpClient createClient(Context mContext, Dispatcher mDispatcher,OkHttpClient.Builder builderDef, Interceptor... args){
+    public static OkHttpClient createClient(Context mContext, Dispatcher mDispatcher,OkHttpClient.Builder builderDef, long timeOut, Interceptor... args){
         OkHttpClient.Builder builder = builderDef;
 
         if (builder == null) {
@@ -40,33 +40,31 @@ public class UtilsRetrofit {
             for(Interceptor interceptor : args){
                 builder.addInterceptor(interceptor);
             }
-        OkHttpClient result = builder
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
-                .writeTimeout(120, TimeUnit.SECONDS)
+        return builder
+                .connectTimeout(timeOut, TimeUnit.SECONDS)
+                .readTimeout(timeOut, TimeUnit.SECONDS)
+                .writeTimeout(timeOut, TimeUnit.SECONDS)
                 .dispatcher(mDispatcher)
                 .build();
-
-        return result;
     }
 
-    public static Retrofit createRetrofitAdapter(Context mContext, Dispatcher mDispatcher, String baseUrl, @Nullable Interceptor... args){
+    public static Retrofit createRetrofitAdapter(Context mContext, Dispatcher mDispatcher, String baseUrl, long timeOut, @Nullable Interceptor... args){
         return new Retrofit.Builder()
 //                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(UtilsGson.createGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(UtilsRetrofit.createClient(mContext, mDispatcher, null, args))
+                .client(UtilsRetrofit.createClient(mContext, mDispatcher, null, timeOut,args))
                 .build();
 
     }
 
-    public static Retrofit createUnSafeRetrofitAdapter(Context mContext, Dispatcher mDispatcher, String baseUrl, @Nullable Interceptor... args){
+    public static Retrofit createUnSafeRetrofitAdapter(Context mContext, Dispatcher mDispatcher, String baseUrl, long timeOut, @Nullable Interceptor... args){
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(UtilsGson.createGson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(UtilsRetrofit.createClient(mContext, mDispatcher, getUnsafeOkHttpClient(), args))
+                .client(UtilsRetrofit.createClient(mContext, mDispatcher, getUnsafeOkHttpClient(), timeOut, args))
                 .build();
 
     }
