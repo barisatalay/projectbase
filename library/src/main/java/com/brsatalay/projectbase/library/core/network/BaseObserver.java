@@ -7,6 +7,9 @@ import com.brsatalay.projectbase.library.core.data.model.EventType;
 import com.brsatalay.projectbase.library.core.data.model.event.BaseEvent;
 import com.brsatalay.projectbase.library.core.data.model.event.DialogEvent;
 import com.brsatalay.projectbase.library.core.data.model.event.Http503Event;
+import com.brsatalay.projectbase.library.core.data.model.event.TimeOutEvent;
+
+import java.net.SocketTimeoutException;
 
 import io.reactivex.observers.DisposableSingleObserver;
 
@@ -33,8 +36,12 @@ public abstract class BaseObserver<T> extends DisposableSingleObserver<T> {
     @Override
     public void onError(Throwable e) {
         Log.e(TAG, e.getMessage());
-
-        if (e instanceof DialogEvent) {
+        if (e instanceof SocketTimeoutException){
+            TimeOutEvent event = new TimeOutEvent("İstek zaman aşımına uğradı!\nLütfen Tekrar deneyin.");
+            event.setType(EventType.Error);
+            onAlert(event);
+            onResponseError(event);
+        }else if (e instanceof DialogEvent) {
             DialogEvent event = (DialogEvent) e;
             if (event.getLocalizedMessage().equalsIgnoreCase(ErrorConstant.DBConnectErrorText)){
                 event = (DialogEvent) new DialogEvent(ErrorConstant.DBConnectError, e).setType(EventType.Warning);
